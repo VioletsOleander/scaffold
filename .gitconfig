@@ -1,0 +1,4 @@
+[alias]
+	stat = status
+	line = log --oneline
+	stats = status
