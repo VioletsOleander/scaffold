@@ -21,3 +21,9 @@ set incsearch
 
 " enable mouse
 set mouse+=a
+
+" tab and shift (<<, >>) with 4 spaces
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
