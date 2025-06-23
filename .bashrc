@@ -9,7 +9,7 @@ alias ll='ls -al'
 alias cls=clear
 
 # functions
-cdl() {
+cl() {
     cd "$1" && ll
 }
 
