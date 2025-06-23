@@ -2,6 +2,7 @@
 
 function setup() {
 	rsync --exclude ".git/" \
+        --exclude ".gitignore" \
 		--exclude "setup.sh" \
 		--exclude "README.md" \
         --exclude "additional_setup.sh" \
