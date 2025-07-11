@@ -37,3 +37,4 @@ set noswapfile
 
 " no beep and flash when error
 set noerrorbells
+set vb t_vb=
