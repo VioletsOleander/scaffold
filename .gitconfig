@@ -7,3 +7,5 @@
 	stat = status
 	line = log --oneline
 	stats = status
+[core]
+    editor = vim
