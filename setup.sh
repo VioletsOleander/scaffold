@@ -93,7 +93,7 @@ done
 # Ensure we're in $HOME/configs 
 if [[ "$(pwd)" != "$HOME/configs" ]]; then
     echo "Error: this script must run from \$HOME/configs/"
-    echo "Current dir: $current_dir"
+    echo "Current dir: $(pwd)"
     echo "Expected: $HOME/configs"
     exit 1
 fi
