@@ -3,3 +3,10 @@ theme = "zed_onelight"
 [editor.cursor-shape]
 insert = "bar"
 
+[keys.insert]
+"C-[" = "normal_mode"
+j = { k = "normal_mode"}
+
+[keys.select]
+"C-[" = "normal_mode"
+
