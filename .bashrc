@@ -66,3 +66,5 @@ function y() {
 # uv
 . "$HOME/.local/bin/env"
 
+# pixi
+export PATH="/home/vio/.pixi/bin:$PATH"
