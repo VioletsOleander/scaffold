@@ -63,3 +63,6 @@ function y() {
 	/bin/rm -f -- "$tmp"
 }
 
+# uv
+. "$HOME/.local/bin/env"
+
