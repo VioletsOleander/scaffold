@@ -64,7 +64,9 @@ function y() {
 }
 
 # uv
-. "$HOME/.local/bin/env"
+if [[ -f $HOME/.local/bin/env ]]; then
+    . "$HOME/.local/bin/env"
+fi
 
 # pixi
 export PATH="/home/vio/.pixi/bin:$PATH"
