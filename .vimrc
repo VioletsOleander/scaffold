@@ -44,5 +44,10 @@ set vb t_vb=
 noremap <C-v> <A-v>
 
 " no recursive map in insert mode
-" map jk to Esc
+" map jj, jk, kk to Esc
+inoremap jj <Esc>
 inoremap jk <Esc>
+inoremap kk <Esc>
+
+" map Alt-n to Esc
+inoremap <A-n> <Esc>
