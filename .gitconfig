@@ -16,6 +16,7 @@
 	bd = branch -D
 	bdr = branch -r -d
 	sw = switch
+    l = log --oneline
 	line = log --oneline
 [core]
     editor = vim
