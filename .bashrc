@@ -69,4 +69,4 @@ if [[ -f $HOME/.local/bin/env ]]; then
 fi
 
 # pixi
-export PATH="/home/vio/.pixi/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$PATH"
