@@ -1,0 +1,11 @@
+# use vi editing mode
+set editing-mode vi
+
+# enable mode indicators in the terminal prompt
+set show-mode-in-prompt on
+
+# cursor shapes (\1 and \2 tell readline these are non-printing control characters)
+# insert mode: steady bar (vertical line)
+set vi-ins-mode-string \1\e[6 q\2
+# normal mode: steady block
+set vi-cmd-mode-string \1\e[2 q\2
