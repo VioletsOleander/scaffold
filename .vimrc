@@ -29,10 +29,11 @@ set incsearch
 # enable mouse in all modes
 set mouse=a
 
-# tab and shift (<<, >>) with 4 spaces
+# tab and shift (<<, >>), backspace with 4 spaces
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 
 # do not generate backup file, undo file, swap file
 set nobackup
