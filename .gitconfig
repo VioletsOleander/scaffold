@@ -19,7 +19,7 @@
     l = log --oneline
 	line = log --oneline
 [core]
-    editor = vim
+    editor = nvim
     pager = delta
 	autocrlf = input
 	quotepath = false
