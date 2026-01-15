@@ -1,7 +1,3 @@
 # Configs
 
-## Usage
-
-```bash
-python setup.py -h
-```
+Relies on [recnys](https://github.com/VioletsOleander/recnys) for synchronization.
