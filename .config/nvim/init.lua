@@ -1,13 +1,13 @@
 require("config.lazy")
 
--- n-v-c: Normal, Visual, Command-line Normal mode use block
--- i-ci-ve: Insert, Command-line Insert, Visual-exclude mode use ver25 (vertical bar)
+-- n-v: Normal, Visual use block
+-- i-c-ci-ve: Insert, Command-line Normal/Insert, Visual-exclude mode use ver25 (vertical bar)
 -- r-cr: Replace, Command-line Replace mode use block
 -- o: Operator-pending mode use hor20 (horizontal bar)
 -- blinkon0: Disable blinking
 vim.opt.guicursor = {
-    "n-v-c:block-blinkon0",
-    "i-ci-ve:ver25-blinkon0",
+    "n-v:block-blinkon0",
+    "i-c-ci-ve:ver25-blinkon0",
     "r-cr:block-blinkon0",
     "o:hor20-blinkon0",
 }
