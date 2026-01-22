@@ -4,7 +4,7 @@
     ".inputrc": { dest: { windows: "" } },
     ".tmux.conf": { dest: { windows: "" } },
     ".gitconfig",
-    ".config/nvim/": { dest: { windows: "AppData/Local/nvim" } },
-    ".config/helix/",
-    ".config/yazi/",
+    "nvim/": { dest: { windows: "AppData/Local/nvim" } },
+    "helix/",
+    "yazi/",
 }
