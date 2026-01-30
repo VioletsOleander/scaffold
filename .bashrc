@@ -1,12 +1,12 @@
 # === primary ===
 
 # source the global configuration
-if [ -f /etc/bashrc ]; then
+if [[ -f /etc/bashrc ]]; then
         . /etc/bashrc
 fi
 
 # if not running interactively, don't do anything
-# $- is a special bash vairale containing the current shell options
+# $- is a special bash variable containing the current shell options
 # *i* is a glob pattern means any string contains 'i'
 # && return means if condition is true, just return
 [[ $- != *i* ]] && return
@@ -26,7 +26,7 @@ alias cls=clear
 
 alias vi=vim
 
-alias rm='echo "rm is not allow, use trach-cli please."; false'
+alias rm='echo "rm is not allow, use trash-cli please."; false'
 
 
 # === functions ===
@@ -54,6 +54,11 @@ export EDITOR=vim
 # \$: display $ for regular users, # for root
 PS1='[\u@\h \W]\$ '
 
+# homebrew
+if [[ -d /home/linuxbrew/.linuxbrew ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+fi
+
 # yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -63,10 +68,3 @@ function y() {
 	/bin/rm -f -- "$tmp"
 }
 
-# uv
-if [[ -f $HOME/.local/bin/env ]]; then
-    . "$HOME/.local/bin/env"
-fi
-
-# pixi
-export PATH="$HOME/.pixi/bin:$PATH"
