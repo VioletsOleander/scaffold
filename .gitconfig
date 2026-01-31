@@ -18,6 +18,8 @@
 	sw = switch
     l = log --oneline
 	line = log --oneline
+	retry = !git commit -e -F .git/COMMIT_EDITMSG
+    re = retry
 [core]
     editor = nvim
     pager = delta
