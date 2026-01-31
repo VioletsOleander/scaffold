@@ -9,3 +9,21 @@ set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[6 q\2
 # normal mode: steady block
 set vi-cmd-mode-string \1\e[2 q\2
+
+$if mode=vi
+  set keymap vi-insert
+  "\C-p": previous-history
+  "\C-n": next-history
+
+  set keymap vi-move
+  "\C-p": previous-history
+  "\C-n": next-history
+$endif
+
+  set keymap vi-command
+  "\C-p": previous-history
+  "\C-n": next-history
+$endif
+# set ctrl-p, ctrl-n for history navigation
+$if mode=vi
+
