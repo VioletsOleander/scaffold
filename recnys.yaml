@@ -7,4 +7,5 @@
     "nvim/": { dest: { windows: "AppData/Local/nvim" } },
     "helix/",
     "yazi/",
+    "nushell/",
 }
