@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    ".bashrc.template": "shellscript",
+    "config.nu.template": "nushell"
+  }
+}
