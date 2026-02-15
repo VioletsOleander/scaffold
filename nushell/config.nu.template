@@ -1,0 +1,26 @@
+$env.config.buffer_editor = "nvim"
+
+# carapace
+source $"($nu.cache-dir)/carapace.nu"
+
+def --env proxy-on [proxy_url: string = "{{ proxy_url }}"] {
+    $env.http_proxy = $proxy_url
+    $env.https_proxy = $proxy_url
+    $env.no_proxy = "localhost,127.0.0.1,::1"
+    print $"Proxy enabled: ($proxy_url)"
+}
+
+def --env proxy-off [] {
+    hide-env http_proxy
+    hide-env https_proxy
+    hide-env no_proxy
+    print "Proxy disabled."
+}
+
+def proxy-status [] {
+    {
+        http: ($env | get -o http_proxy)
+        https: ($env | get -o https_proxy)
+        no_proxy: ($env | get -o no_proxy)
+    }
+}
