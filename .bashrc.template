@@ -35,6 +35,29 @@ cl() {
     cd "$1" && ll
 }
 
+proxy_url = {{ proxy_url }}
+
+proxy_on() {
+    export http_proxy="http://$proxy_url"
+    export https_proxy="http://$proxy_url"
+    export all_proxy="socks5://$proxy_url"
+	echo "Proxy has been set to $proxy_url"
+    proxy_status
+}
+
+proxy_off() {
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    echo "Proxy has been disabled."
+}
+
+proxy_status() {
+    echo "http_proxy  = $http_proxy"
+    echo "https_proxy = $https_proxy"
+    echo "all_proxy   = $all_proxy"
+}
+
 
 # === environment variables ===
 
@@ -57,7 +80,7 @@ PS1='[\u@\h \W]\$ '
 # homebrew
 if [[ -d /home/linuxbrew/.linuxbrew ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-fi
+f	i
 
 # yazi
 function y() {
