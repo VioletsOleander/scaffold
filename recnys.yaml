@@ -1,11 +1,12 @@
 {
-    ".vimrc": { dest: { windows: "_vimrc" } },
-    ".bashrc": { dest: { windows: "" }, policy: "source" },
-    ".inputrc": { dest: { windows: "" } },
-    ".tmux.conf": { dest: { windows: "" } },
+    ".vimrc": { dest: { Windows: "_vimrc" } },
+    ".bashrc.template": { dest: { Windows: "" }, policy: "source" },
+    ".inputrc": { dest: { Windows: "" } },
+    ".tmux.conf": { dest: { Windows: "" } },
     ".gitconfig",
-    "nvim/": { dest: { windows: "AppData/Local/nvim" } },
+    "nvim/": { dest: { Windows: "AppData/Local/nvim" } },
     "helix/",
     "yazi/",
     "nushell/",
+    "nushell/config.nu.template",
 }
