@@ -8,6 +8,6 @@
     "helix/",
     "yazi/",
     "nushell/config.nu",
-    "nushell/autoload/net.nu.template",
+    "nushell/autoload/",
     "nushell/third_party/nu_scripts/custom-completions/git/git-completions.nu",
 }
