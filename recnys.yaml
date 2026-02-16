@@ -7,6 +7,7 @@
     "nvim/": { dest: { Windows: "AppData/Local/nvim" } },
     "helix/",
     "yazi/",
-    "nushell/",
-    "nushell/config.nu.template",
+    "nushell/config.nu",
+    "nushell/autoload/net.nu.template",
+    "nushell/third_party/nu_scripts/custom-completions/git/git-completions.nu",
 }
