@@ -8,6 +8,7 @@ return {
             }
             require('onedark').load()
         end,
+        cond = not vim.g.vscode,
     },
     {
         -- the light theme is too grayish for my taste
@@ -15,11 +16,13 @@ return {
         "olimorris/onedarkpro.nvim",
         priority = 1000,
         lazy = true,
+        cond = not vim.g.vscode,
     },
     {
         "folke/tokyonight.nvim",
         priority = 1000,
         opts = {},
         lazy = true,
+        cond = not vim.g.vscode,
     },
 }

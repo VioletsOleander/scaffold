@@ -4,4 +4,5 @@ return {
         vim.g.llama_config = { show_info = 0 }
     end,
     lazy = true,
+    cond = not vim.g.vscode,
 }
