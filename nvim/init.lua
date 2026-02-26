@@ -34,3 +34,7 @@ vim.keymap.set('i', 'jj', '<Esc>')
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('i', 'kk', '<Esc>')
 vim.keymap.set('i', '<M-n>', '<Esc>')
+
+-- normal mode keymaps
+vim.keymap.set('n', 'H', '^')
+vim.keymap.set('n', 'L', '$')
