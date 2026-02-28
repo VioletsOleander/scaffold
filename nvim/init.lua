@@ -38,3 +38,4 @@ vim.keymap.set('i', '<M-n>', '<Esc>')
 -- normal mode keymaps
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
+vim.keymap.set('n', '<Leader>h', ':nohlsearch<CR>')
