@@ -25,13 +25,12 @@ if vim.g.vscode then
     -- vscode commands references: https://code.visualstudio.com/api/references/commands
     local vscode = require("vscode")
 
+    -- center screen and clear search highlight
     local function reveal_line(pos)
         vscode.action('revealLine', {
             args = { { lineNumber = vim.fn.line('.') - 1, at = pos } }
         })
     end
-
-    -- center screen and clear search highlight
     vim.keymap.set('n', 'zz', function()
         reveal_line('center')
         vim.cmd.nohlsearch()
@@ -43,6 +42,16 @@ if vim.g.vscode then
     vim.keymap.set('n', 'zb', function()
         reveal_line('bottom')
         vim.cmd.nohlsearch()
+    end)
+
+    -- go to type definition
+    vim.keymap.set('n', 'gy', function()
+        vscode.action('editor.action.goToTypeDefinition')
+    end)
+
+    -- rename symbol
+    vim.keymap.set('n', '<Leader>r', function()
+        vscode.action('editor.action.rename')
     end)
 
     -- save
