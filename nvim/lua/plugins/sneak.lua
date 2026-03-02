@@ -23,4 +23,10 @@ return {
             end,
         })
     end,
+    keys = {
+        { "f", "<Plug>Sneak_f", mode = { "n", "x", "o" }, desc = "Sneak Forward to" },
+        { "F", "<Plug>Sneak_F", mode = { "n", "x", "o" }, desc = "Sneak Backward to" },
+        { "t", "<Plug>Sneak_t", mode = { "n", "x", "o" }, desc = "Sneak Forward till" },
+        { "T", "<Plug>Sneak_T", mode = { "n", "x", "o" }, desc = "Sneak Backward till" },
+    },
 }
