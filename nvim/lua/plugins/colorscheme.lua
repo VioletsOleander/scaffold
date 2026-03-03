@@ -8,11 +8,10 @@ return {
             }
             require('onedark').load()
         end,
+        -- lazy = true,
         cond = not vim.g.vscode,
     },
     {
-        -- the light theme is too grayish for my taste
-        -- so prefer the light variant of onedarkpro
         "olimorris/onedarkpro.nvim",
         priority = 1000,
         lazy = true,
@@ -22,7 +21,10 @@ return {
         "folke/tokyonight.nvim",
         priority = 1000,
         opts = {},
-        lazy = true,
+        -- config = function()
+        --     vim.cmd.colorscheme('tokyonight-day')
+        -- end,
+        -- lazy = true,
         cond = not vim.g.vscode,
     },
 }
