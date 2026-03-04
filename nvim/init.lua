@@ -22,11 +22,8 @@ opt.smartcase = true
 opt.ignorecase = true
 
 -- jump to line start/end
-map({'n', 'x', 'o'}, '<Leader>h', '^')
-map({'n', 'x', 'o'}, '<Leader>l', '$')
-
--- clear search highlight
-map('n', '<Leader>c', '<Cmd>nohlsearch<CR>', { silent = true })
+map({ 'n', 'x', 'o' }, '<Leader>h', '^')
+map({ 'n', 'x', 'o' }, '<Leader>l', '$')
 
 -- copy/paste to system clipboard
 map({ 'n', 'v' }, '<Leader>y', '"+y')
@@ -36,6 +33,12 @@ if g.vscode then
     -- vscode commands references: https://code.visualstudio.com/api/references/commands
     local vscode = require("vscode")
     local action = vscode.action
+
+    -- clear search highlight, close marker widget
+    map('n', '<Leader>c', function()
+        cmd.nohlsearch()
+        action('closeMarkersNavigation')
+    end)
 
     -- center screen and clear search highlight
     local function reveal_line(pos)
@@ -59,6 +62,28 @@ if g.vscode then
     -- go to type definition
     map('n', 'gy', function()
         action('editor.action.goToTypeDefinition')
+    end)
+
+    -- go to previous problem/diagnostic
+    map('n', ']d', function()
+        action('editor.action.marker.next')
+    end)
+    -- go to next problem/diagnostic
+    map('n', '[d', function()
+        action('editor.action.marker.prev')
+    end)
+    -- somehow the nextInFiles/prevInFiles doesn't work well
+    -- go to next problem/diagnostic in all files
+    -- map('n', ']D', function()
+    --     action('editor.action.marker.nextInFiles')
+    -- end)
+    -- go to previous problem/diagnostic in all files
+    -- map('n', '[D', function()
+    --     action('editor.action.marker.prevInFiles')
+    -- end)
+    -- code action
+    map('n', '<leader>a', function()
+        action('editor.action.quickFix')
     end)
 
     -- rename symbol
@@ -95,14 +120,22 @@ else
         end,
     })
 
+    -- clear search highlight
+    map('n', '<Leader>c', function()
+        cmd.nohlsearch()
+    end)
+
+    -- center screen and clear search highlight
+    map('n', 'zz', function()
+        cmd.normal('zz')
+        cmd.nohlsearch()
+    end)
+
     -- insert mode to normal mode
     map('i', 'jj', '<Esc>')
     map('i', 'jk', '<Esc>')
     map('i', 'kk', '<Esc>')
     map('i', '<M-n>', '<Esc>')
-
-    -- center screen and clear search highlight
-    map('n', 'zz', 'zz<Cmd>nohlsearch<CR>', { silent = true })
 
     -- save
     map('n', '<Leader>w', '<Cmd>w<CR>')
