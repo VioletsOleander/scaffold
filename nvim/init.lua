@@ -22,11 +22,11 @@ opt.smartcase = true
 opt.ignorecase = true
 
 -- jump to line start/end
-map('n', 'H', '^')
-map('n', 'L', '$')
+map({'n', 'x', 'o'}, '<Leader>h', '^')
+map({'n', 'x', 'o'}, '<Leader>l', '$')
 
 -- clear search highlight
-map('n', '<Leader>h', '<Cmd>nohlsearch<CR>', { silent = true })
+map('n', '<Leader>c', '<Cmd>nohlsearch<CR>', { silent = true })
 
 -- copy/paste to system clipboard
 map({ 'n', 'v' }, '<Leader>y', '"+y')
