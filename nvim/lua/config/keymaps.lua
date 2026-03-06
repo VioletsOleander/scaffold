@@ -84,7 +84,7 @@ else
 
     -- center screen and clear search highlight
     map('n', 'zz', function()
-        cmd.normal('zz')
+        cmd.normal({ args = { 'zz' }, bang = true })
         cmd.nohlsearch()
     end)
 
