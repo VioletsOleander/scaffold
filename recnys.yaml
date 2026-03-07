@@ -8,6 +8,7 @@
     "helix/",
     "yazi/",
     "nushell/config.nu",
+    "nushell/login.nu",
     "nushell/autoload/",
     "nushell/third_party/nu_scripts/custom-completions/git/git-completions.nu",
 }
