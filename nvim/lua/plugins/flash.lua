@@ -7,15 +7,20 @@ return {
                 search = {
                     enabled = true,
                 },
+                -- flash does not support disable highlight for char mode
+                -- so use vim.sneak as alternative for char mode
                 char = {
                     enabled = false,
-                    keys = { "f", "F", "t", "T", },
+                    keys = { "f", "F", "t", "T", ";", ",", },
                     char_actions = function(motion)
                         return {
-                            [";"] = "next", -- set to `right` to always go right
-                            [","] = "prev", -- set to `left` to always go left
+                            [";"] = "next",
+                            [","] = "prev",
                         }
                     end,
+                    highlight = {
+                        backdrop = false,
+                    },
                 },
             },
         },
