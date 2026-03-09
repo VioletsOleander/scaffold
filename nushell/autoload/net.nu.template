@@ -1,8 +1,10 @@
-export def --env proxy-on [proxy_url: string = "{{ proxy_url }}"] {
+export def --env proxy-on [proxy_url: string = "{{ proxy_url }}", --slient] {
     $env.http_proxy = $proxy_url
     $env.https_proxy = $proxy_url
     $env.no_proxy = "localhost,127.0.0.1,::1"
-    print $"Proxy enabled: ($proxy_url)"
+    if not $slient {
+        print $"Proxy enabled: ($proxy_url)"
+    }
 }
 
 export def --env proxy-off [] {
@@ -15,3 +17,5 @@ export def --env proxy-off [] {
 export def proxy-status [] {
   $env | select -o http_proxy https_proxy no_proxy
 }
+
+proxy-on --slient
