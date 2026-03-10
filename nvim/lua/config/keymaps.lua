@@ -3,12 +3,12 @@ local cmd = vim.cmd
 
 -- Keymaps for both vscode and Neovim
 -- jump to line start/end
-map({ 'n', 'x', 'o' }, '<Leader>h', '^')
-map({ 'n', 'x', 'o' }, '<Leader>l', '$')
+map({ 'n', 'x', 'o', }, '<Leader>h', '^')
+map({ 'n', 'x', 'o', }, '<Leader>l', '$')
 
 -- copy/paste to system clipboard
-map({ 'n', 'v' }, '<Leader>y', '"+y')
-map({ 'n', 'v' }, '<Leader>p', '"+p')
+map({ 'n', 'v', }, '<Leader>y', '"+y')
+map({ 'n', 'v', }, '<Leader>p', '"+p')
 
 if vim.g.vscode then
     -- Keymaps for vscode
@@ -25,7 +25,7 @@ if vim.g.vscode then
     -- center screen and clear search highlight
     local function reveal_line(pos)
         action('revealLine', {
-            args = { { lineNumber = fn.line('.') - 1, at = pos } }
+            args = { { lineNumber = vim.api.nvim_win_get_cursor(0)[1] - 1, at = pos, }, },
         })
     end
     map('n', 'zz', function()
@@ -84,7 +84,7 @@ else
 
     -- center screen and clear search highlight
     map('n', 'zz', function()
-        cmd.normal({ args = { 'zz' }, bang = true })
+        cmd.normal({ args = { 'zz', }, bang = true, })
         cmd.nohlsearch()
     end)
 
