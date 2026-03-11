@@ -1,30 +1,28 @@
 return {
     {
         "navarasu/onedark.nvim",
+        cond = not vim.g.vscode,
         priority = 1000,
         config = function()
             require('onedark').setup {
-                style = 'light'
+                style = 'light',
             }
             require('onedark').load()
         end,
-        -- lazy = true,
-        cond = not vim.g.vscode,
     },
     {
         "olimorris/onedarkpro.nvim",
+        cond = not vim.g.vscode,
         priority = 1000,
         lazy = true,
-        cond = not vim.g.vscode,
     },
     {
         "folke/tokyonight.nvim",
+        cond = not vim.g.vscode,
         priority = 1000,
         opts = {},
         -- config = function()
         --     vim.cmd.colorscheme('tokyonight-day')
         -- end,
-        -- lazy = true,
-        cond = not vim.g.vscode,
     },
 }
