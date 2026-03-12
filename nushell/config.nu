@@ -15,3 +15,6 @@ $env.config.keybindings ++= [ {
 const third_party = ($nu.default-config-dir | path join "third_party")
 const git_completions_path = ($third_party | path join "nu_scripts/custom-completions/git/git-completions.nu")
 source $git_completions_path
+
+alias la = ls -a
+alias ll = ls -l
