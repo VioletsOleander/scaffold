@@ -16,15 +16,15 @@ return {
 						["<Leader>c"] = "close",
 						["<C-j>"] = "move_selection_next",
 						["<C-k>"] = "move_selection_previous",
-						["<Leader>h"] = "file_split",
-						["<Leader>v"] = "file_vsplit",
+						["<Leader>h"] = "select_horizontal",
+						["<Leader>v"] = "select_vertical",
 					},
 					["n"] = {
 						["<Leader>c"] = "close",
 						["<C-j>"] = "move_selection_next",
 						["<C-k>"] = "move_selection_previous",
-						["<Leader>h"] = "file_split",
-						["<Leader>v"] = "file_vsplit",
+						["<Leader>h"] = "select_horizontal",
+						["<Leader>v"] = "select_vertical",
 					},
 				},
 			},
@@ -59,11 +59,27 @@ return {
 				desc = "Help Tags",
 			},
 			{
+				"<Leader>fH",
+				function()
+					require("telescope.builtin").live_grep({
+						search_dirs = vim.api.nvim_get_runtime_file("doc/*.txt", true),
+					})
+				end,
+				desc = "Live Grep Help",
+			},
+			{
+				"<Leader>fj",
+				function()
+					require("telescope.builtin").jumplist()
+				end,
+				desc = "Jump Lists",
+			},
+			{
 				"<Leader>fo",
 				function()
 					require("telescope.builtin").oldfiles()
 				end,
-				desc = "Old Files",
+				desc = "Previously Opened Files",
 			},
 			{
 				"<Leader>fc",
