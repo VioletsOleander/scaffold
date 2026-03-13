@@ -27,16 +27,20 @@ opt.softtabstop = 4
 opt.smartcase = true
 opt.ignorecase = true
 
+opt.termguicolors = true
+
 if not g.vscode then
 	-- n-v: Normal, Visual use block
 	-- i-c-ci-ve: Insert, Command-line Normal/Insert, Visual-exclude mode use ver25 (vertical bar)
 	-- r-cr: Replace, Command-line Replace mode use block
 	-- o: Operator-pending mode use hor20 (horizontal bar)
 	-- blinkon0: Disable blinking
-	opt.guicursor = {
-		"n-v:block-blinkon0",
-		"i-c-ci-ve:ver25-blinkon0",
-		"r-cr:block-blinkon0",
-		"o:hor20-blinkon0",
+	local cursor_config = {
+		"n-v:block-MyCursor",
+		"i-c-ci-ve:ver25-MyCursor",
+		"r-cr:block-MyCursor",
+		"o:hor20-MyCursor",
+		"a:blinkon0-MyCursor",
 	}
+	opt.guicursor = table.concat(cursor_config, ",")
 end

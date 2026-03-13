@@ -70,6 +70,7 @@ return {
 	{
 		"rainzm/flash-zh.nvim",
 		dependencies = { "folke/flash.nvim" },
+		lazy = true,
 		event = "VeryLazy",
 		keys = {
 			{
