@@ -7,9 +7,9 @@ return {
 	{
 		"ggml-org/llama.vim",
 		cond = not vim.g.vscode,
-		lazy = true,
 		init = function()
 			vim.g.llama_config = { show_info = 0 }
 		end,
+		lazy = true,
 	},
 }

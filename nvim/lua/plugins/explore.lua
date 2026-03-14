@@ -7,7 +7,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
-		cmd = "Telescope",
 		opts = {
 			defaults = {
 				mappings = {
@@ -29,6 +28,7 @@ return {
 				},
 			},
 		},
+		cmd = "Telescope",
 		keys = {
 			{
 				"<Leader>ff",
@@ -105,9 +105,16 @@ return {
 			{
 				"<Leader>fd",
 				function()
+					require("telescope.builtin").diagnostics({ bufnr = 0 })
+				end,
+				desc = "Show Diagnostics in Current Buffer",
+			},
+			{
+				"<Leader>fD",
+				function()
 					require("telescope.builtin").diagnostics()
 				end,
-				desc = "Diagnostics",
+				desc = "Show Diagnostics in Workspace",
 			},
 			{
 				"<Leader>fs",
@@ -116,18 +123,58 @@ return {
 				end,
 				desc = "Spell Suggestions",
 			},
+			{
+				"gd",
+				function()
+					require("telescope.builtin").lsp_definitions()
+				end,
+				desc = "Go to Definition",
+			},
+			{
+				"gr",
+				function()
+					require("telescope.builtin").lsp_references()
+				end,
+				desc = "Show References",
+			},
+			{
+				"gi",
+				function()
+					require("telescope.builtin").lsp_implementations()
+				end,
+				desc = "Go to Implementation",
+			},
+			{
+				"gy",
+				function()
+					require("telescope.builtin").lsp_type_definitions()
+				end,
+				desc = "Go to Type Definition",
+			},
+			{
+				"<Leader>ss",
+				function()
+					require("telescope.builtin").lsp_document_symbols()
+				end,
+				desc = "Document Symbols",
+			},
+			{
+				"<Leader>sw",
+				function()
+					require("telescope.builtin").lsp_dynamic_workspace_symbols()
+				end,
+				desc = "Workspace Symbols",
+			},
 		},
 	},
 	{
 		"mikavilpas/yazi.nvim",
 		version = "*", -- use the latest stable version
 		cond = not vim.g.vscode,
-		event = "VeryLazy",
 		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = true },
+			"nvim-lua/plenary.nvim",
 		},
 		opts = {
-			-- if you want to open yazi instead of netrw, see below for more info
 			open_for_directories = true,
 			keymaps = {
 				show_help = "?",
@@ -135,12 +182,6 @@ return {
 				-- open_file_in_horizontal_split = "<Leader>h",
 			},
 		},
-		-- if you use `open_for_directories=true`, this is recommended
-		init = function()
-			-- mark netrw as loaded so it's not loaded at all.
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-		end,
 		keys = {
 			{
 				"<Leader>-", -- <Leader> -

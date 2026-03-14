@@ -24,8 +24,6 @@ return {
 		cond = not vim.g.vscode,
 		priority = 1000,
 		opts = {},
-		-- config = function()
-		--     vim.cmd.colorscheme('tokyonight-day')
-		-- end,
+		lazy = true,
 	},
 }

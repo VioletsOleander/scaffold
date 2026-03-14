@@ -1,8 +1,33 @@
 return {
 	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+			local sep = vim.fn.has("win32") == 1 and ";" or ":"
+			if not string.find(vim.env.PATH, mason_bin, 1, true) then
+				vim.env.PATH = mason_bin .. sep .. vim.env.PATH
+			end
+			vim.lsp.enable({ "lua_ls", "ty" })
+		end,
+	},
+	{
+		"mason-org/mason.nvim",
+		cond = not vim.g.vscode,
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+			},
+		},
+		cmd = "Mason",
+	},
+	{
 		"stevearc/conform.nvim",
 		cond = not vim.g.vscode,
-		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -16,51 +41,13 @@ return {
 				lsp_format = "fallback",
 			},
 		},
-	},
-	{
-		"mason-org/mason.nvim",
-		cond = not vim.g.vscode,
-		cmd = "Mason",
-		opts = {
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-		},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		cond = not vim.g.vscode,
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			ensure_installed = { "lua_ls", "ty" },
-		},
-		dependencies = {
-			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-	},
-	{
-		"folke/lazydev.nvim",
-		cond = not vim.g.vscode,
-		ft = "lua", -- only load on lua files
-		opts = {
-			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-			},
-		},
 	},
 	{
 		"saghen/blink.cmp",
 		version = "1.*",
 		cond = not vim.g.vscode,
 		dependencies = { "rafamadriz/friendly-snippets" },
-		event = { "BufReadPre", "BufNewFile" },
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
@@ -113,5 +100,6 @@ return {
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
+		event = "InsertEnter",
 	},
 }

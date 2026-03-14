@@ -8,13 +8,13 @@ return {
 	{
 		"nvim-mini/mini.ai",
 		version = "*",
-		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		opts = {
 			custom_textobjects = {
 				f = false,
 				c = false,
 			},
 		},
+		event = "VeryLazy",
 	},
 	{
 		"folke/flash.nvim",
@@ -87,7 +87,6 @@ return {
 	{
 		"rainzm/flash-zh.nvim",
 		dependencies = { "folke/flash.nvim" },
-		lazy = true,
 		keys = {
 			{
 				"gz",
@@ -102,7 +101,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		lazy = false,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
