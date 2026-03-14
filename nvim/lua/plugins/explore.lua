@@ -52,6 +52,13 @@ return {
 				desc = "Buffers",
 			},
 			{
+				"<Leader>fo",
+				function()
+					require("telescope.builtin").oldfiles()
+				end,
+				desc = "Previously Opened Files",
+			},
+			{
 				"<Leader>fh",
 				function()
 					require("telescope.builtin").help_tags()
@@ -68,18 +75,18 @@ return {
 				desc = "Live Grep Help",
 			},
 			{
+				"<Leader>fq",
+				function()
+					require("telescope.builtin").quickfix()
+				end,
+				desc = "Quickfix List",
+			},
+			{
 				"<Leader>fj",
 				function()
 					require("telescope.builtin").jumplist()
 				end,
 				desc = "Jump Lists",
-			},
-			{
-				"<Leader>fo",
-				function()
-					require("telescope.builtin").oldfiles()
-				end,
-				desc = "Previously Opened Files",
 			},
 			{
 				"<Leader>fc",
@@ -103,11 +110,11 @@ return {
 				desc = "Diagnostics",
 			},
 			{
-				"<Leader>fr",
+				"<Leader>fs",
 				function()
-					require("telescope.builtin").resume()
+					require("telescope.builtin").spell_suggest()
 				end,
-				desc = "Resume Search",
+				desc = "Spell Suggestions",
 			},
 		},
 	},
@@ -156,7 +163,7 @@ return {
 				function()
 					vim.cmd("Yazi toggle")
 				end,
-				desc = "Resume the last yazi session",
+				desc = "Toggle Yazi for exploration, last yazi session will be resumed if exists",
 			},
 		},
 	},
