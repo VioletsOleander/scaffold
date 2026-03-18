@@ -10,6 +10,10 @@ map({ "n", "x", "o" }, "L", "$", { desc = "Jump to line end" })
 map({ "n", "x", "o" }, "<Leader>H", "H", { desc = "Jump to top of screen" })
 map({ "n", "x", "o" }, "<Leader>L", "L", { desc = "Jump to bottom of screen" })
 
+-- jump 5 lines up/down
+map({ "n", "x", "o" }, "<C-j>", "5j", { desc = "Jump 5 lines down" })
+map({ "n", "x", "o" }, "<C-k>", "5k", { desc = "Jump 5 lines up" })
+
 -- copy/paste to system clipboard
 map({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to system clipboard" })
 map({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
