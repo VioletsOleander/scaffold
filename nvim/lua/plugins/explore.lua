@@ -12,7 +12,6 @@ return {
 			input = { enabled = true },
 			indent = { enabled = true },
 			-- make explore easier
-			dashboard = { enabled = true },
 			explorer = { enabled = true, replace_netrw = true, trash = true },
 			picker = {
 				enabled = true,
@@ -65,6 +64,13 @@ return {
 					Snacks.picker.command_history()
 				end,
 				desc = "Command History",
+			},
+			{
+				"<Leader>n",
+				function()
+					Snacks.picker.notifications()
+				end,
+				desc = "Notification History",
 			},
 			-- buffer
 			{
@@ -279,6 +285,20 @@ return {
 					Snacks.picker.undo()
 				end,
 				desc = "Search Undo History",
+			},
+			{
+				"<Leader>ss",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				desc = "Search LSP Symbols",
+			},
+			{
+				"<Leader>sS",
+				function()
+					Snacks.picker.lsp_workspace_symbols()
+				end,
+				desc = "Search LSP Workspace Symbols",
 			},
 			-- LSP
 			{
