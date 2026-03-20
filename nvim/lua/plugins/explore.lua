@@ -1,8 +1,11 @@
+---@module "snacks"
+
 return {
 	{
 		"folke/snacks.nvim",
 		cond = not vim.g.vscode,
 		priority = 1000,
+		---@type snacks.Config
 		opts = {
 			-- make file load quicker
 			bigfile = { enabled = true },
@@ -319,6 +322,13 @@ return {
 					Snacks.picker.lsp_definitions()
 				end,
 				desc = "Goto Definition",
+			},
+			{
+				"gs",
+				function()
+					Snacks.picker.lsp_definitions({ confirm = { "edit_vsplit" } })
+				end,
+				desc = "Goto Definition in Vertically Splited Window",
 			},
 			{
 				"gD",

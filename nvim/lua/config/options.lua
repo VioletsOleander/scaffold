@@ -34,6 +34,9 @@ if not g.vscode then
 	-- auto write
 	opt.autowrite = true
 
+	-- vertical split to right
+	opt.splitright = true
+
 	-- gui
 	opt.termguicolors = true
 	local cursor_config = {
