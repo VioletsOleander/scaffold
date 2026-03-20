@@ -3,7 +3,7 @@ return {
 		"neovim/nvim-lspconfig",
 		cond = not vim.g.vscode,
 		config = function()
-			vim.lsp.enable({ "lua_ls", "stylua", "ty", "ruff", "yamlls" })
+			vim.lsp.enable({ "lua_ls", "stylua", "ty", "ruff", "yamlls", "jsonls" })
 		end,
 		event = "VeryLazy",
 	},
@@ -13,9 +13,10 @@ return {
 		opts = {
 			formatters_by_ft = {
 				yaml = { "prettier" },
+				json = { "prettier" },
 			},
 		},
-		ft = { "yaml", "yml" },
+		ft = { "yaml", "yml", "json" },
 	},
 	{
 		"folke/lazydev.nvim",
@@ -61,8 +62,7 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			-- (Default) Only show the documentation popup when manually triggered
-			completion = { documentation = { auto_show = false } },
+			completion = { documentation = { auto_show = true } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`

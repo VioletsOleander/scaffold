@@ -11,7 +11,7 @@ if not vim.g.vscode then
 	})
 	-- format on save (for those without lsp format support)
 	autocmd("BufWritePre", {
-		pattern = { "*.yaml", "*.yml" },
+		pattern = { "*.yaml", "*.yml", "*.json" },
 		callback = function(event)
 			require("conform").format({ bufnr = event.buf })
 		end,
