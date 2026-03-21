@@ -16,7 +16,7 @@ return {
 				json = { "prettier" },
 			},
 		},
-		ft = { "yaml", "yml", "json" },
+		ft = { "yaml", "json" },
 	},
 	{
 		"folke/lazydev.nvim",
