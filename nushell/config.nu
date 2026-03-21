@@ -11,6 +11,8 @@ $env.config.keybindings ++= [ {
         mode: normal # This is case senstive, see https://github.com/nushell/reedline/pull/932
     }
 } ]
+$env.config.cursor_shape.vi_insert = "line"
+$env.config.cursor_shape.vi_normal = "block"
 
 const third_party = ($nu.default-config-dir | path join "third_party")
 const git_completions_path = ($third_party | path join "nu_scripts/custom-completions/git/git-completions.nu")
