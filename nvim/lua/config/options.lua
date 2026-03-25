@@ -37,6 +37,11 @@ if not g.vscode then
 	-- vertical split to right
 	opt.splitright = true
 
+	-- cmdline completion
+	opt.wildmenu = true
+	opt.wildmode = "longest:full,full"
+	opt.wildoptions = "pum,fuzzy,tagfile"
+
 	-- gui
 	opt.termguicolors = true
 	local cursor_config = {
