@@ -1,30 +1,34 @@
 [colors.primary]
 background = '#fafafa'
-foreground = '#383a42'
+foreground = '#2a2c33'
 
 [colors.normal]
 black = '#000000'
-red = '#de3d35'
+red = '#be342c'
 green = '#3e953a'
-yellow = '#d2b67b'
-blue = '#2f5af3'
-magenta = '#a00095'
-cyan = '#3e953a'
+yellow = '#73732b'
+blue = '#2153e8'
+magenta = '#950095'
+cyan = '#2e7a78'
 white = '#bbbbbb'
 
 [colors.bright]
-black = '#000000'
-red = '#de3d35'
-green = '#3e953a'
-yellow = '#d2b67b'
-blue = '#2f5af3'
+black = '#020202'
+red = '#dd352c'
+green = '#378532'
+yellow = '#82743a'
+blue = '#426c3b'
 magenta = '#a00095'
-cyan = '#3e953a'
+cyan = '#397f7c'
 white = '#ffffff'
 
 [colors.cursor]
 text = "#ffffff"
-cursor = "#526fff"
+cursor = "#4b73ec"
+
+[colors.selection]
+text = "CellForeground"
+background = "#ededed"
 
 [cursor]
 style = { shape = "Beam", blinking = "Never" }
@@ -33,4 +37,8 @@ style = { shape = "Beam", blinking = "Never" }
 shell = { program = "nu", args = ["--login"] }
 
 [font]
-normal = { family = "FiraCode Nerd Font", style = "Retina" }
+normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
+size = 12
+
+[selection]
+save_to_clipboard = true
