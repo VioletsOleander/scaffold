@@ -6,19 +6,19 @@ return {
 		priority = 1000,
 		config = function()
 			local custom_colors = {
-				fg = "#2A2C33",
+				fg = "#2a2c33",
 				bg = "#fafafa",
-				black = "#000000",
-				blue = "#1c47cf",
-				cyan = "#28774a",
-				green = "#327a2e",
+				black = "#2a2c33",
+				blue = "#2f5af3",
+				cyan = "#048a81",
+				green = "#3f953a",
 				purple = "#950095",
-				red = "#be342c",
-				white = "#BBBBBB",
-				yellow = "#917d54",
-				orange = "#a65d37",
-				highlight = "#c2a36b",
-				comment = "#81858c",
+				red = "#d04239",
+				white = "#fafafa",
+				yellow = "#a77301",
+				orange = "#986801",
+				highlight = "#ededed",
+				comment = "#a0a1a7",
 			}
 
 			require("onedarkpro").setup({ colors = custom_colors })
