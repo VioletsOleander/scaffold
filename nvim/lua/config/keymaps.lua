@@ -59,7 +59,9 @@ if vim.g.vscode then
 		end, { desc = desc })
 	end
 
-	key_to_action("<Leader>ss", "workbench.action.gotoSymbol", "Go to symbols in current file")
+	key_to_action("<Leader>ss", "workbench.action.gotoSymbol", "Search symbols in current file")
+
+	key_to_action("<Leader>/", "workbench.action.quickOpen", "Search files")
 
 	key_to_action("<Leader>e", "workbench.view.explorer", "Open and Focus on Explorer")
 
