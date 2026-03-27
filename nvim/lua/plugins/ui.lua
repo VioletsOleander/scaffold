@@ -5,30 +5,57 @@ return {
 		cond = not vim.g.vscode,
 		priority = 1000,
 		config = function()
+			local gray = "#aaaaaa"
+			local light_gray = "#dddddd"
+			local lighter_gray = "#efefef"
+
+			local white = "#ffffff"
+			local dark_white = "#fafafa"
+			local darker_white = "#f0f0f0"
+
+			local black = "#1a1a1a"
+			local light_black = "#2a2c33"
+
+			local green = "#378433"
+
 			local custom_colors = {
 				onelight = {
-					fg = "#2a2c33",
-					bg = "#fafafa",
-					black = "#2a2c33",
+					fg = light_black,
+					bg = dark_white,
+					black = black,
+					white = white,
 					blue = "#2f5af3",
 					cyan = "#078378",
-					green = "#378433",
+					green = green,
 					purple = "#950095",
 					red = "#d04239",
-					white = "#fafafa",
 					yellow = "#867109",
 					orange = "#bc6b0b",
-					gray = "#72747e",
-					highlight = "#e8e9ed",
+					gray = gray,
+					highlight = lighter_gray,
 					comment = "#72747e",
 				},
 			}
-			local custom_highlights = {
-				Cursor = { fg = "#ffffff", bg = "#4b73ec" },
-				StatusLine = { fg = "#2a2c33", bg = "#f0f0f0" },
-			}
 
-			require("onedarkpro").setup({ colors = custom_colors, highlights = custom_highlights })
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "onelight",
+				callback = function()
+					local highlights = {
+						Cursor = { fg = white, bg = light_gray },
+						StatusLine = { bg = darker_white },
+						LineNr = { bg = darker_white },
+						NonText = { bg = darker_white },
+						FloatTitle = { fg = green, bg = darker_white },
+						NormalFloat = { bg = darker_white },
+					}
+
+					for name, val in pairs(highlights) do
+						vim.api.nvim_set_hl(0, name, val)
+					end
+				end,
+			})
+
+			require("onedarkpro").setup({ colors = custom_colors })
 			vim.cmd("colorscheme onelight")
 		end,
 	},
