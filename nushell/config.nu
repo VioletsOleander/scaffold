@@ -13,6 +13,7 @@ $env.config.keybindings ++= [ {
 } ]
 $env.config.cursor_shape.vi_insert = "line"
 $env.config.cursor_shape.vi_normal = "block"
+$env.config.rm.always_trash = true
 
 $env.LS_COLORS = (vivid generate one-light-refined)
 
