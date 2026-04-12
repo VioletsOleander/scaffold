@@ -1,11 +1,10 @@
 {
-    ".vimrc": { dest: { Windows: "_vimrc" } },
-    ".bashrc.template": { dest: { Windows: "" }, policy: "source" },
-    ".inputrc": { dest: { Windows: "" } },
-    ".tmux.conf": { dest: { Windows: "" } },
-    ".gitconfig",
+    ".vimrc": { dest: { Windows: "_vimrc", Linux: ".vimrc" } },
+    ".bashrc.template": { dest: { Windows: "", Linux: "my_bashrc" } },
+    ".inputrc": { dest: { Windows: "", Linux: ".inputrc" } },
+    ".tmux.conf": { dest: { Windows: "", Linux: ".tmux.conf" } },
+    ".gitconfig": { dest: { Windows: ".gitconfig", Linux: ".gitconfig" } },
     "nvim/": { dest: { Windows: "AppData/Local/nvim" } },
-    "helix/",
     "yazi/",
     "lazygit/",
     "Microsoft/Windows Terminal/":
@@ -18,8 +17,6 @@
         },
     "alacritty/",
     "vivid/",
-    "nushell/config.nu",
-    "nushell/login.nu",
-    "nushell/autoload/",
-    "nushell/third_party/nu_scripts/custom-completions/git/git-completions.nu",
+    "nushell/",
+    "nushell/autoload/net.nu.template",
 }
