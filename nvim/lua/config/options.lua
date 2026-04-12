@@ -14,8 +14,6 @@ g.loaded_tarPlugin = 1
 g.loaded_tar = 1
 g.loaded_zipPlugin = 1
 g.loaded_zip = 1
-g.loaded_matchit = 1
-g.loaded_matchparen = 1
 
 g.loaded_python3_provider = 0
 g.loaded_ruby_provider = 0
