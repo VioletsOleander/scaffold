@@ -1,8 +1,0 @@
-[language-server.codebook]
-command = "codebook-lsp"
-args = ["serve"]
-
-[[language]]
-name = "git-commit"
-language-servers = ["codebook"]
-diagnostic-severity = "warning"
