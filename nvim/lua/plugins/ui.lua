@@ -4,6 +4,7 @@ return {
 		"olimorris/onedarkpro.nvim",
 		cond = not vim.g.vscode,
 		priority = 1000,
+		lazy = true,
 		config = function()
 			local gray = "#aaaaaa"
 			local light_gray = "#dddddd"
@@ -18,15 +19,15 @@ return {
 
 			local green = "#378433"
 
-			local blue = "#2f5af3"
-			local light_blue = "#376af7"
-			local lighter_blue = "#c8d3f3"
+			local blue = "#305cf3"
+			local light_blue = "#3967f6"
 
 			local purple = "#950095"
 			local cyan = "#078378"
 
 			local orange = "#bc6b0b"
-			local red = "#d04239"
+			local red = "#ce403a"
+			local yellow = "#926e15"
 
 			local fg = light_black
 			local bg = dark_white
@@ -42,7 +43,7 @@ return {
 					green = green,
 					purple = purple,
 					red = red,
-					yellow = "#867109",
+					yellow = yellow,
 					orange = orange,
 					gray = gray,
 					highlight = lighter_gray,
@@ -82,6 +83,16 @@ return {
 		end,
 	},
 	{
+		"sainnhe/gruvbox-material",
+		cond = not vim.g.vscode,
+		priority = 1000,
+		config = function()
+			vim.g.gruvbox_material_better_performance = 1
+			vim.g.gruvbox_material_background = "medium"
+			vim.cmd("colorscheme gruvbox-material")
+		end,
+	},
+	{
 		"folke/tokyonight.nvim",
 		cond = not vim.g.vscode,
 		priority = 1000,
@@ -93,16 +104,6 @@ return {
 		cond = not vim.g.vscode,
 		name = "catppuccin",
 		priority = 1000,
-		lazy = true,
-	},
-	{
-		"sainnhe/gruvbox-material",
-		cond = not vim.g.vscode,
-		priority = 1000,
-		config = function()
-			vim.g.gruvbox_material_better_performance = 1
-			vim.g.gruvbox_material_background = "soft"
-		end,
 		lazy = true,
 	},
 	-- Statusline
