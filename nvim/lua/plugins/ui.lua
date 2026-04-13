@@ -10,16 +10,23 @@ return {
 			local lighter_gray = "#efefef"
 
 			local white = "#ffffff"
-			local dark_white = "#fafafa"
+			local dark_white = "#f9f9f9"
 			local darker_white = "#f0f0f0"
 
 			local black = "#1a1a1a"
 			local light_black = "#2a2c33"
 
 			local green = "#378433"
+
 			local blue = "#2f5af3"
+			local light_blue = "#376af7"
+			local lighter_blue = "#c8d3f3"
+
 			local purple = "#950095"
 			local cyan = "#078378"
+
+			local orange = "#bc6b0b"
+			local red = "#d04239"
 
 			local fg = light_black
 			local bg = dark_white
@@ -34,9 +41,9 @@ return {
 					cyan = cyan,
 					green = green,
 					purple = purple,
-					red = "#d04239",
+					red = red,
 					yellow = "#867109",
-					orange = "#bc6b0b",
+					orange = orange,
 					gray = gray,
 					highlight = lighter_gray,
 					comment = "#72747e",
@@ -56,8 +63,11 @@ return {
 						NormalFloat = { bg = float_bg },
 						SnacksPickerPreview = { fg = fg, bg = bg },
 						SnacksPickerPrompt = { fg = blue, bg = float_bg },
+						-- flash
+						FlashMatch = { fg = darker_white, bg = light_blue },
+						FlashCurrent = { fg = darker_white, bg = orange },
+						FlashLabel = { fg = darker_white, bg = red },
 						-- others
-						Cursor = { fg = white, bg = light_gray },
 						StatusLine = { bg = darker_white },
 					}
 
