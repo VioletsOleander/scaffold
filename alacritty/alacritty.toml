@@ -1,11 +1,11 @@
 [colors.primary]
-background = '#fafafa'
+background = "#fafafa"
 foreground = '#2a2c33'
 
 [colors.normal]
-black = '#000000'
+black = '#2a2c33'
 red = '#be342c'
-green = '#3e953a'
+green = '#327a2e'
 yellow = '#73732b'
 blue = '#2153e8'
 magenta = '#950095'
@@ -13,7 +13,7 @@ cyan = '#2e7a78'
 white = '#bbbbbb'
 
 [colors.bright]
-black = '#020202'
+black = '#383a42'
 red = '#dd352c'
 green = '#378532'
 yellow = '#82743a'
