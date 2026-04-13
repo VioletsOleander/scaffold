@@ -21,6 +21,7 @@ return {
 				win = {
 					input = {
 						keys = {
+							["<C-q>"] = { "close", mode = { "i", "n" } },
 							["<C-j>"] = { "list_down", mode = { "i", "n" } },
 							["<C-k>"] = { "list_up", mode = { "i", "n" } },
 							["<Leader>v"] = { "edit_vsplit", mode = { "i", "n" } },
@@ -29,6 +30,7 @@ return {
 					},
 					list = {
 						keys = {
+							["<C-q>"] = { "close", mode = { "i", "n" } },
 							["<C-j>"] = { "list_down", mode = { "i", "n" } },
 							["<C-k>"] = { "list_up", mode = { "i", "n" } },
 							["<Leader>v"] = { "edit_vsplit", mode = { "i", "n" } },
