@@ -153,7 +153,7 @@ local nvim_treesitter_textobjects = {
 	opts = {
 		select = {
 			-- Automatically jump forward to textobj, similar to targets.vim
-			lookahead = true,
+			lookahead = false,
 			-- You can choose the select mode (default is charwise 'v')
 			--
 			-- Can also be a function which gets passed a table with the keys
@@ -164,7 +164,7 @@ local nvim_treesitter_textobjects = {
 			selection_modes = {
 				["@parameter.outer"] = "v", -- charwise
 				["@function.outer"] = "V", -- linewise
-				-- ['@class.outer'] = '<c-v>', -- blockwise
+				-- ["@class.outer"] = "<c-v>", -- blockwise
 			},
 			-- If you set this to `true` (default is `false`) then any textobject is
 			-- extended to include preceding or succeeding whitespace. Succeeding
@@ -317,7 +317,7 @@ local nvim_treesitter_textobjects = {
 		{
 			"]A",
 			function()
-				require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.outter", "textobjects")
+				require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.outer", "textobjects")
 			end,
 			mode = { "n", "x", "o" },
 			desc = "Go to next parameter start",
@@ -353,7 +353,7 @@ local nvim_treesitter_textobjects = {
 				require("nvim-treesitter-textobjects.move").goto_next_start("@call.inner", "textobjects")
 			end,
 			mode = { "n", "x", "o" },
-			desc = "Go to next parameter start",
+			desc = "Go to next procedure call start",
 		},
 		{
 			"[v",
@@ -361,7 +361,7 @@ local nvim_treesitter_textobjects = {
 				require("nvim-treesitter-textobjects.move").goto_previous_start("@call.inner", "textobjects")
 			end,
 			mode = { "n", "x", "o" },
-			desc = "Go to previous parameter start",
+			desc = "Go to previous procedure call start",
 		},
 		{
 			"]V",
@@ -503,6 +503,14 @@ local nvim_treesitter_textobjects = {
 			end,
 			mode = { "x", "o" },
 			desc = "Select around scope",
+		},
+		{
+			"is",
+			function()
+				require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+			end,
+			mode = { "x", "o" },
+			desc = "Select inner scope",
 		},
 	},
 }
