@@ -27,6 +27,7 @@ local atom_one_light = {
 		local light_red = "#d7332c"
 		local yellow = "#73732b"
 
+		local darker_pink = "#b0005c"
 		local dark_pink = "#d70071"
 
 		local fg = black
@@ -67,7 +68,7 @@ local atom_one_light = {
 					-- flash
 					FlashMatch = { fg = dark_white, bg = light_blue },
 					FlashCurrent = { fg = dark_white, bg = orange },
-					FlashLabel = { fg = white, bg = dark_pink },
+					FlashLabel = { fg = white, bg = darker_pink },
 					-- others
 					StatusLine = { bg = darker_white },
 					Cursor = { fg = black, bg = gray },
