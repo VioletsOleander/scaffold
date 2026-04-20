@@ -1,3 +1,3 @@
-# Scaffold
+# Seed
 
 Relies on [recnys](https://github.com/VioletsOleander/recnys) for synchronization.
