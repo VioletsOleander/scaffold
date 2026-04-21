@@ -1,6 +1,7 @@
 local atom_one_light = {
 	"olimorris/onedarkpro.nvim",
 	cond = not vim.g.vscode,
+	lazy = true,
 	priority = 1000,
 	config = function()
 		local gray = "#aaaaaa"
@@ -88,7 +89,6 @@ local atom_one_light = {
 local gruvbox_material = {
 	"sainnhe/gruvbox-material",
 	cond = not vim.g.vscode,
-	lazy = true,
 	priority = 1000,
 	config = function()
 		vim.g.gruvbox_material_better_performance = 1

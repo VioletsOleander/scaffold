@@ -46,8 +46,13 @@ if not g.vscode then
 
 	-- cmdline completion
 	opt.wildmenu = true
-	opt.wildmode = "longest:full,full"
+	opt.wildmode = "noselect:lastused,full"
 	opt.wildoptions = "pum,fuzzy,tagfile"
+
+	-- insert completion
+	opt.autocomplete = true
+	opt.completeopt = "menu,popup,noselect"
+	opt.complete:prepend("o")
 
 	-- gui
 	opt.termguicolors = true

@@ -18,10 +18,6 @@ map({ "n", "x", "o" }, "<C-k>", "5k", { desc = "Jump 5 lines up" })
 map({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to system clipboard" })
 map({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
 
--- insert newline before/after the cursor line
-map({ "n" }, "[<Space>", "O<Esc>", { desc = "Insert a newline before current line" })
-map({ "n" }, "]<Space>", "o<Esc>", { desc = "Insert a newline after current line" })
-
 if vim.g.vscode then
 	-- Keymaps for vscode
 	-- vscode commands references: https://code.visualstudio.com/api/references/commands
@@ -113,6 +109,18 @@ else
 	map("i", "jk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
 	map("i", "kk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
 	map("i", "<M-n>", "<Esc>", { desc = "Insert Mode to Normal Mode" })
+
+	-- completion
+	map("i", "<C-]>", "<C-X><C-]>", { desc = "Completion with tags" })
+	map("i", "<C-F>", "<C-X><C-F>", { desc = "Completion with file names" })
+	map("i", "<C-D>", "<C-X><C-D>", { desc = "Completion with definition or marcros" })
+	map("i", "<C-L>", "<C-X><C-L>", { desc = "Completion with seen whole lines" })
+	map("i", "<Tab>", function()
+		return vim.fn.pumvisible() ~= 0 and "<C-n>" or "<Tab>"
+	end, { expr = true, silent = true, desc = "Select next completion by pressing tab when popup meun is visible" })
+	map("i", "<S-Tab>", function()
+		return vim.fn.pumvisible() ~= 0 and "<C-p>" or "<S-Tab>"
+	end, { expr = true, silent = true, desc = "Select previous completion by pressing tab when popup meun is visible" })
 
 	-- quit
 	map({ "i", "n" }, "<C-q>", "<Cmd>quit<CR>", { desc = "Quit Current Window" })
