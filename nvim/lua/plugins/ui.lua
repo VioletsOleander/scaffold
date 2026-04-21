@@ -96,6 +96,17 @@ local gruvbox_material = {
 		vim.cmd("colorscheme gruvbox-material")
 	end,
 }
+local ever_forest = {
+	"sainnhe/everforest",
+	cond = not vim.g.vscode,
+	lazy = true,
+	priority = 1000,
+	config = function()
+		vim.g.everforest_better_performance = 1
+		vim.g.everforest_background = "medium"
+		vim.cmd("colorscheme everforest")
+	end,
+}
 
 local tokyo_night_day = {
 	"folke/tokyonight.nvim",
@@ -121,6 +132,7 @@ local treesitter_context = {
 return {
 	atom_one_light,
 	gruvbox_material,
+	ever_forest,
 	tokyo_night_day,
 	treesitter_context,
 }
