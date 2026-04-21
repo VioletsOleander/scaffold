@@ -68,7 +68,7 @@ local mini_ai = {
 			-- conditional (if)
 			i = spec_treesitter({ a = "@conditional.outer", i = "@conditional.inner" }),
 			-- scope
-			s = spec_treesitter({ a = "@scope.outer", i = "@scope.inner" }),
+			o = spec_treesitter({ a = "@scope.outer", i = "@scope.inner" }),
 			-- loop
 			l = spec_treesitter({ a = "@loop.outer", i = "@loop.inner" }),
 			-- block
