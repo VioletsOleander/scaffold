@@ -5,19 +5,14 @@
 	email = 1377232072@qq.com
 [alias]
 	c = commit
-	cm = commit
-	com = commit
 	a = add
 	s = status
-	st = status
-	stat = status
-	stats = status
 	b = branch
 	bd = branch -D
 	bdr = branch -r -d
 	sw = switch
     l = log --oneline
-	line = log --oneline
+    ls = log --oneline -10
 	retry = !git commit -e -F .git/COMMIT_EDITMSG
     re = retry
 [core]
