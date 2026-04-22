@@ -51,13 +51,14 @@
   "workbench.editor.restoreEditors": true,
   "workbench.editor.showTabs": "single",
   "workbench.editor.useModal": "off",
-  "workbench.colorTheme": "Atom One Light",
   "workbench.iconTheme": null,
   "workbench.colorCustomizations": {
-    "editorCursor.foreground": "#526fffcc",
-    "editorCursor.background": "#ffffff",
-    "terminalCursor.foreground": "#526fffcc",
-    "terminalCursor.background": "#ffffff",
+    "[Atom One Light]": {
+      "editorCursor.foreground": "#526fffcc",
+      "editorCursor.background": "#ffffff",
+      "terminalCursor.foreground": "#526fffcc",
+      "terminalCursor.background": "#ffffff",
+    },
     "[Tokyo Night Light]": {
       // "editor.foreground":"#343b59",
       // "editor.background": "#e6e7ed",
@@ -78,8 +79,7 @@
   "editor.inlayHints.enabled": "off",
   "editor.fontSize": 15,
   "editor.fontFamily": "Fira Code Retina, Consolas, monospace",
-  "editor.fontLigatures": true,
-  // "editor.fontLigatures": "'calt', 'cv35'",
+  "editor.fontLigatures": "'cv01', 'cv02'",
   "editor.rulers": [
     110
   ],
@@ -231,4 +231,6 @@
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
   "cSpell.enabled": false,
+  "workbench.colorTheme": "Atom One Light",
+  "editor.inlineSuggest.edits.showCollapsed": true,
 }
