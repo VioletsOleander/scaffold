@@ -22,7 +22,7 @@ g.loaded_node_provider = 0
 
 -- Options
 -- timeout
-opt.timeoutlen = 400
+opt.timeoutlen = 500
 
 -- tab use 4 spaces
 -- (auto)indent use 4 spaces
@@ -54,6 +54,9 @@ if not g.vscode then
 	opt.completeopt = "menu,popup,noselect"
 	opt.complete = "o,.,w,b,u,t"
 
+	-- popup meun height
+	opt.pumheight = 12
+
 	-- gui
 	opt.termguicolors = true
 	local cursor_config = {
@@ -65,4 +68,5 @@ if not g.vscode then
 	}
 	opt.guicursor = table.concat(cursor_config, ",")
 	opt.background = "light"
+	opt.showtabline = 0
 end
