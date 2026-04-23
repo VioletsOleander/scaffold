@@ -42,3 +42,10 @@ size = 12
 
 [selection]
 save_to_clipboard = true
+
+[window]
+dynamic_padding = true
+dimensions = { columns = 80, lines = 24 }
+position = { x = 760, y = 390 }  # start in middle screen
+level = "AlwaysOnTop"
+
