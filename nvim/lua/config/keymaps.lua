@@ -1,58 +1,65 @@
+-- [ Keymaps ]
 local map = vim.keymap.set
-local cmd = vim.cmd
 
--- Keymaps for both vscode and Neovim
--- jump to line start/end
+-- Keymaps shared by VSCode and Neovim
+
+-- Jump to line start/end
 map({ "n", "x", "o" }, "H", "^", { desc = "Jump to line start" })
 map({ "n", "x", "o" }, "L", "$", { desc = "Jump to line end" })
 
--- jump to top/bottom of screen
+-- Jump to top/bottom of screen
 map({ "n", "x", "o" }, "<Leader>H", "H", { desc = "Jump to top of screen" })
 map({ "n", "x", "o" }, "<Leader>L", "L", { desc = "Jump to bottom of screen" })
 
--- jump 5 lines up/down
+-- Jump 5 lines up/down
 map({ "n", "x", "o" }, "<C-j>", "5j", { desc = "Jump 5 lines down" })
 map({ "n", "x", "o" }, "<C-k>", "5k", { desc = "Jump 5 lines up" })
 
--- copy/paste to system clipboard
+-- Copy/paste to system clipboard
 map({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to system clipboard" })
 map({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
 
-map("n", "<Leader>]", "o<Esc>", { silent = true, desc = "Insert a newline below" })
-map("n", "<Leader>]", "O<Esc>", { silent = true, desc = "Insert a newline above" })
+-- Insert newline above/below (the default mapping will not move the cursor)
+map("n", "]<Space>", "o<Esc>", { silent = true, desc = "Insert a newline below" })
+map("n", "[<Space>", "O<Esc>", { silent = true, desc = "Insert a newline above" })
 
+-- Keymaps for VSCode only
+-- VSCode commands references: https://code.visualstudio.com/api/references/commands
 if vim.g.vscode then
-	-- Keymaps for vscode
-	-- vscode commands references: https://code.visualstudio.com/api/references/commands
 	local vscode = require("vscode")
 	local action = vscode.action
 
-	-- clear search highlight, close marker widget
+	-- Clear screen
 	map("n", "<Leader>c", function()
-		cmd.nohlsearch()
+		vim.cmd("nohlsearch")
 		action("closeMarkersNavigation")
 	end, { desc = "Clear Search Highlight and Close Markers Navigation" })
 
-	-- center screen and clear search highlight
+	--- Helper function to redraw screen and re-put line
+	---
+	---@param pos string
 	local function reveal_line(pos)
 		action("revealLine", {
 			args = { { lineNumber = vim.api.nvim_win_get_cursor(0)[1] - 1, at = pos } },
 		})
 	end
+
+	-- Center/Top/Bottom screen and clear screen
 	map("n", "zz", function()
 		reveal_line("center")
-		cmd.nohlsearch()
+		vim.cmd("nohlsearch")
 	end, { desc = "Center Screen and Clear Search Highlight" })
 	map("n", "zt", function()
 		reveal_line("top")
-		cmd.nohlsearch()
+		vim.cmd("nohlsearch")
 	end, { desc = "Top Screen and Clear Search Highlight" })
 	map("n", "zb", function()
 		reveal_line("bottom")
-		cmd.nohlsearch()
+		vim.cmd("nohlsearch")
 	end, { desc = "Bottom Screen and Clear Search Highlight" })
 
 	--- Helper function to map key to a vscode action
+	---
 	---@param key string
 	---@param action_name string
 	---@param desc string
@@ -62,19 +69,12 @@ if vim.g.vscode then
 		end, { desc = desc })
 	end
 
+	-- Gotos
 	key_to_action("<Leader>ss", "workbench.action.gotoSymbol", "Search symbols in current file")
-
-	key_to_action("<Leader>/", "workbench.action.quickOpen", "Search files")
-
-	key_to_action("<Leader>e", "workbench.view.explorer", "Open and Focus on Explorer")
-
-	-- go to type definition
 	key_to_action("gy", "editor.action.goToTypeDefinition", "Go to Type Definition")
+	key_to_action("]d", "editor.action.marker.next", "Go to Next Problem/Diagnostic")
+	key_to_action("[d", "editor.action.marker.prev", "Go to Previous Problem/Diagnostic")
 
-	-- go to previous problem/diagnostic
-	key_to_action("]d", "editor.action.marker.next", "Go to Next Problem")
-	-- go to next problem/diagnostic
-	key_to_action("[d", "editor.action.marker.prev", "Go to Previous Problem")
 	-- somehow the nextInFiles/prevInFiles doesn't work well
 	-- go to next problem/diagnostic in all files
 	-- map('n', ']D', function()
@@ -84,113 +84,156 @@ if vim.g.vscode then
 	-- map('n', '[D', function()
 	--     action('editor.action.marker.prevInFiles')
 	-- end)
-	-- code action
-	key_to_action("<Leader>a", "editor.action.quickFix", "Quick Fix")
 
-	-- rename symbol
+	-- Explore
+	key_to_action("<Leader>/", "workbench.action.quickOpen", "Search files")
+	key_to_action("<Leader>e", "workbench.view.explorer", "Open and Focus on Explorer")
+
+	-- Code actions
+	key_to_action("<Leader>a", "editor.action.quickFix", "Quick Fix")
 	key_to_action("<Leader>r", "editor.action.rename", "Rename Symbol")
 
-	-- save
+	-- Save file
 	key_to_action("<Leader>w", "workbench.action.files.save", "Save File")
 	key_to_action("<Leader><CR>", "workbench.action.files.save", "Save File")
-else
-	-- Keymaps for Neovim
-	-- clear search highlight
-	map("n", "<Leader>c", function()
-		cmd.nohlsearch()
-		Snacks.notifier.hide()
-	end, { desc = "Clear Screen (including search highlight, notifications)" })
 
-	-- center screen and clear search highlight
-	map("n", "zz", function()
-		cmd.normal({ args = { "zz" }, bang = true })
-		cmd.nohlsearch()
-	end, { desc = "Center Screen and Clear Search Highlight" })
+	return
+end
 
-	-- insert mode to normal mode
-	map("i", "jj", "<Esc>", { desc = "Insert Mode to Normal Mode" })
-	map("i", "jk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
-	map("i", "kk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
-	map("i", "<M-n>", "<Esc>", { desc = "Insert Mode to Normal Mode" })
+-- Keymaps for Neovim only
 
-	-- completion
-	map("i", "<C-]>", "<C-X><C-]>", { desc = "Completion with tags" })
-	map("i", "<C-F>", "<C-X><C-F>", { desc = "Completion with file names" })
-	map("i", "<C-D>", "<C-X><C-D>", { desc = "Completion with definition or marcros" })
-	map("i", "<C-L>", "<C-X><C-L>", { desc = "Completion with seen whole lines" })
+-- Clear screen
+map("n", "<Leader>c", function()
+	vim.cmd("nohlsearch")
+	Snacks.notifier.hide()
+end, { desc = "Clear Screen (including search highlight, notifications)" })
 
-	-- quit
-	map({ "i", "n" }, "<C-q>", "<Cmd>quit<CR>", { desc = "Quit Current Window" })
+-- Center screen and clear screen
+map("n", "zz", function()
+	vim.cmd("normal! zz")
+	vim.cmd("nohlsearch")
+end, { desc = "Center Screen and Clear Search Highlight" })
 
-	-- save
-	map("n", "<Leader>w", "<Cmd>w<CR>", { desc = "Save File" })
-	map("n", "<Leader><CR>", "<Cmd>w<CR>", { desc = "Save File" })
+-- Insert mode to normal mode
+map("i", "jj", "<Esc>", { desc = "Insert Mode to Normal Mode" })
+map("i", "jk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
+map("i", "kk", "<Esc>", { desc = "Insert Mode to Normal Mode" })
+map("i", "<M-n>", "<Esc>", { desc = "Insert Mode to Normal Mode" })
 
-	-- tab for completion or jump out
+-- Completion
+map("i", "<C-]>", "<C-X><C-]>", { desc = "Completion with tags" })
+map("i", "<C-F>", "<C-X><C-F>", { desc = "Completion with file names" })
+map("i", "<C-D>", "<C-X><C-D>", { desc = "Completion with definition or marcros" })
+map("i", "<C-L>", "<C-X><C-L>", { desc = "Completion with seen whole lines" })
 
-	local function is_closer()
-		local line = vim.api.nvim_get_current_line()
-		local col = vim.api.nvim_win_get_cursor(0)[2]
-		local char_after = line:sub(col + 1, col + 1)
-		local closers = { ")", "]", "}", '"', "'", "`", ">" }
+--- Return the character after cursor
+---
+---@return string
+local function get_next_char()
+	local line = vim.api.nvim_get_current_line()
+	local col = vim.api.nvim_win_get_cursor(0)[2]
+	return line:sub(col + 1, col + 1)
+end
 
-		for _, closer in ipairs(closers) do
-			if char_after == closer then
-				return true
-			end
+--- Return true if the char after cursor is a closer (i.e. ), ], }, ", ', `, >)
+---
+---@return boolean
+local function next_is_closer()
+	local next_char = get_next_char()
+
+	local closers = { ")", "]", "}", '"', "'", "`", ">" }
+	for _, closer in ipairs(closers) do
+		if next_char == closer then
+			return true
 		end
-
-		return false
 	end
 
-	map("i", "<Tab>", function()
-		if vim.fn.pumvisible() ~= 0 then
-			return "<C-n>"
-		elseif is_closer() then
-			return "<Right>"
-		else
-			return "<Tab>"
-		end
-	end, { expr = true, silent = true, desc = "Jump out of brackets or select next completion" })
-
-	map("i", "<S-Tab>", function()
-		return vim.fn.pumvisible() ~= 0 and "<C-p>" or "<S-Tab>"
-	end, { expr = true, silent = true, desc = "Select previous completion" })
-
-	map("i", "<CR>", function()
-		if vim.fn.pumvisible() ~= 0 then
-			-- accept completion if menu is visible
-			return "<C-y>"
-		else
-			-- autopairs if menu is not visible
-			local col = vim.api.nvim_win_get_cursor(0)[2]
-			local line = vim.api.nvim_get_current_line()
-			local before = line:sub(col, col)
-			local after = line:sub(col + 1, col + 1)
-
-			if (before == "{" and after == "}") or (before == "(" and after == ")") then
-				return " <CR><Up><End><CR>"
-			end
-
-			-- otherwise just insert a newline
-			return "<CR>"
-		end
-	end, { expr = true })
-
-	-- Lsp keymaps
-	map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
-
-	map("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-	map("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-
-	map("n", "<Leader>r", vim.lsp.buf.rename, { desc = "Rename Symbol" })
-	map({ "n", "v" }, "<Leader>a", vim.lsp.buf.code_action, { desc = "Code Action" })
-
-	map("n", "<Leader>cd", vim.diagnostic.open_float, { desc = "Show Line Diagnostics" })
-	map("n", "[d", function()
-		vim.diagnostic.jump({ count = 1, float = true })
-	end, { desc = "Prev Diagnostic" })
-	map("n", "]d", function()
-		vim.diagnostic.jump({ count = -1, float = true })
-	end, { desc = "Next Diagnostic" })
+	return false
 end
+
+--- Return true if the completion menu is visible
+---
+---@return boolean
+local function pum_is_visible()
+	return vim.fn.pumvisible() ~= 0
+end
+
+-- Tab/Shift-Tab for iterating completion items
+-- Tab also for jump out of brackets
+map("i", "<Tab>", function()
+	if pum_is_visible() then
+		return "<C-n>"
+	elseif next_is_closer() then
+		return "<Right>"
+	else
+		return "<Tab>"
+	end
+end, { expr = true, desc = "Jump out of brackets or select next completion" })
+
+map("i", "<S-Tab>", function()
+	return pum_is_visible() and "<C-p>" or "<S-Tab>"
+end, { expr = true, desc = "Select previous completion" })
+
+-- CR for completion or insert newline with auto-closing pairs
+map("i", "<CR>", function()
+	if vim.fn.pumvisible() ~= 0 then
+		return "<C-y>"
+	else
+		local line = vim.api.nvim_get_current_line()
+		local col = vim.api.nvim_win_get_cursor(0)[2]
+
+		local before = line:sub(col, col)
+		local after = line:sub(col + 1, col + 1)
+		if (before == "{" and after == "}") or (before == "(" and after == ")") then
+			return " <CR><Up><End><CR>"
+		end
+
+		return "<CR>"
+	end
+end, { expr = true, desc = "Confirm completion or insert newline with auto-closing pairs" })
+
+-- Ctrl-j/k for selecting completion items
+map("i", "<C-j>", function()
+	if pum_is_visible() then
+		return "<C-n>"
+	else
+		return "<C-j>"
+	end
+end, { expr = true, desc = "Select next completion" })
+
+map("i", "<C-k>", function()
+	if pum_is_visible() then
+		return "<C-p>"
+	else
+		return "<C-k>"
+	end
+end, { expr = true, desc = "Select previous completion" })
+
+-- Lsp gotos
+map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+map("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+
+-- LSP shows
+map("n", "gr", vim.lsp.buf.references, { desc = "Show references" })
+map("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
+
+-- LSP actions
+map("n", "<Leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
+map("n", "<Leader>a", vim.lsp.buf.code_action, { desc = "Code action" })
+
+-- LSP diagnostics
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Prev diagnostic" })
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Next diagnostic" })
+
+-- Quit
+map({ "i", "n" }, "<C-q>", "<Cmd>quit<CR>", { desc = "Quit Current Window" })
+
+-- Save
+map("n", "<Leader>w", "<Cmd>w<CR>", { desc = "Save File" })
+map("n", "<Leader><CR>", "<Cmd>w<CR>", { desc = "Save File" })
