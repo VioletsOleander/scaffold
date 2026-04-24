@@ -7,21 +7,9 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
-            },
-            "id": "User.splitPane.D5151347"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
                 "split": "right"
             },
             "id": "User.splitPane.864CD510"
-        },
-        {
-            "command": "closePane",
-            "id": "User.closePane"
         }
     ],
     "alwaysShowTabs": true,
@@ -42,60 +30,12 @@
     "keybindings": 
     [
         {
-            "id": "Terminal.CopyToClipboard",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
-            "id": null,
-            "keys": "alt+right"
-        },
-        {
-            "id": null,
-            "keys": "alt+up"
-        },
-        {
-            "id": "User.splitPane.D5151347",
-            "keys": "alt+s"
-        },
-        {
-            "id": "Terminal.DuplicatePaneAuto",
-            "keys": "alt+shift+d"
-        },
-        {
-            "id": null,
-            "keys": "alt+down"
-        },
-        {
-            "id": null,
-            "keys": "alt+left"
+            "id": "User.closePane",
+            "keys": "alt+c"
         },
         {
             "id": "User.splitPane.864CD510",
             "keys": "alt+v"
-        },
-        {
-            "id": "Terminal.MoveFocusUp",
-            "keys": "alt+shift+k"
-        },
-        {
-            "id": "Terminal.MoveFocusDown",
-            "keys": "alt+j"
-        },
-        {
-            "id": "Terminal.MoveFocusLeft",
-            "keys": "alt+h"
-        },
-        {
-            "id": "Terminal.MoveFocusRight",
-            "keys": "alt+l"
-        },
-        {
-            "id": "User.closePane",
-            "keys": "alt+c"
         }
     ],
     "language": "en-US",
@@ -153,9 +93,9 @@
                 "commandline": "C:\\Users\\Vios\\scoop\\apps\\nu\\current\\nu.exe",
                 "font": 
                 {
-                    "face": "CaskaydiaCove Nerd Font",
-                    "size": 12,
-                    "weight": "normal"
+                    "face": "FiraCode Nerd Font",
+                    "size": 11.5,
+                    "weight": "medium"
                 },
                 "guid": "{e3adc4cf-b57f-4355-b235-0667b675d430}",
                 "hidden": false,
