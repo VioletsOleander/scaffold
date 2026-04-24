@@ -4,6 +4,13 @@ local nvim_surround = {
 	event = { "BufReadPre", "BufNewFile" },
 }
 
+local nvim_autopair = {
+	"windwp/nvim-autopairs",
+	event = "InsertEnter",
+	opts = {
+		map_cr = false,
+	},
+}
 -- motion
 local flash_nvim = {
 	"folke/flash.nvim",
@@ -199,6 +206,7 @@ local copilot = {
 
 return {
 	nvim_surround,
+	nvim_autopair,
 	mini_ai,
 	flash_nvim,
 	nvim_treesitter,

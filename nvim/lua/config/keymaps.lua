@@ -18,6 +18,9 @@ map({ "n", "x", "o" }, "<C-k>", "5k", { desc = "Jump 5 lines up" })
 map({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to system clipboard" })
 map({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from system clipboard" })
 
+map("n", "<Leader>]", "o<Esc>", { silent = true, desc = "Insert a newline below" })
+map("n", "<Leader>]", "O<Esc>", { silent = true, desc = "Insert a newline above" })
+
 if vim.g.vscode then
 	-- Keymaps for vscode
 	-- vscode commands references: https://code.visualstudio.com/api/references/commands
@@ -123,6 +126,8 @@ else
 	map("n", "<Leader>w", "<Cmd>w<CR>", { desc = "Save File" })
 	map("n", "<Leader><CR>", "<Cmd>w<CR>", { desc = "Save File" })
 
+	-- tab for completion or jump out
+
 	local function is_closer()
 		local line = vim.api.nvim_get_current_line()
 		local col = vim.api.nvim_win_get_cursor(0)[2]
@@ -138,7 +143,6 @@ else
 		return false
 	end
 
-	-- tab for completion or jump out
 	map("i", "<Tab>", function()
 		if vim.fn.pumvisible() ~= 0 then
 			return "<C-n>"
@@ -148,32 +152,10 @@ else
 			return "<Tab>"
 		end
 	end, { expr = true, silent = true, desc = "Jump out of brackets or select next completion" })
+
 	map("i", "<S-Tab>", function()
 		return vim.fn.pumvisible() ~= 0 and "<C-p>" or "<S-Tab>"
 	end, { expr = true, silent = true, desc = "Select previous completion" })
-
-	-- autopairs
-	local the_pairs = {
-		["("] = "()",
-		["["] = "[]",
-		["{"] = "{}",
-		["'"] = "''",
-		['"'] = '""',
-	}
-
-	for open, close in pairs(the_pairs) do
-		map("i", open, function()
-			local col = vim.api.nvim_win_get_cursor(0)[2]
-			local line = vim.api.nvim_get_current_line()
-			local char_after = line:sub(col + 1, col + 1)
-
-			if char_after:match("%w") then
-				return open
-			else
-				return close .. "<Left>"
-			end
-		end, { expr = true })
-	end
 
 	map("i", "<CR>", function()
 		if vim.fn.pumvisible() ~= 0 then
