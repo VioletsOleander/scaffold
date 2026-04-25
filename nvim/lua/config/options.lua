@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- Wait time of mapped sequence
-opt.timeoutlen = 800
+opt.timeoutlen = 500
 
 -- Enable undo/redo changes even after closing and reopening a file
 -- opt.undofile = true

@@ -86,7 +86,7 @@ local atom_one_light = {
 
 					-- Others
 					StatusLine = { bg = darker_white },
-					Cursor = { fg = black, bg = gray },
+					Cursor = { fg = dark_white, bg = light_blue },
 				}
 
 				for name, val in pairs(highlights) do
@@ -138,11 +138,23 @@ local tokyo_night_day = {
 local treesitter_context = {
 	"nvim-treesitter/nvim-treesitter-context",
 	cond = not vim.g.vscode,
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter",
-	},
-	opts = {},
 	event = { "BufReadPost", "BufNewFile" },
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	opts = {},
+}
+
+local lualine = {
+	"nvim-lualine/lualine.nvim",
+	cond = not vim.g.vscode,
+	event = { "BufReadPost", "BufNewFile" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	opts = {},
+}
+
+local mini_icons = {
+	"nvim-mini/mini.icons",
+	cond = not vim.g.vscode,
+	opts = {},
 }
 
 return {
@@ -151,4 +163,6 @@ return {
 	ever_forest,
 	tokyo_night_day,
 	treesitter_context,
+	lualine,
+	mini_icons,
 }

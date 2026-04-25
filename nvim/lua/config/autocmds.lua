@@ -76,7 +76,7 @@ au("LspAttach", {
 
 		-- LSP shows
 		map_local("n", "gr", vim.lsp.buf.references, "Show references")
-		map_local("i", "gk", vim.lsp.buf.signature_help, "Show signature help")
+		map_local({ "n", "i" }, "gk", vim.lsp.buf.signature_help, "Show signature help")
 
 		-- LSP actions
 		map_local("n", "<Leader>r", vim.lsp.buf.rename, "Rename symbol")

@@ -6,9 +6,9 @@ local snacks_opts = {
 	bigfile = { enabled = true },
 	quickfile = { enabled = true },
 	-- UI
-	notifier = { enabled = true, timeout = 3000 },
 	input = { enabled = true },
 	indent = { enabled = true },
+	notifier = { enabled = true, timeout = 3000 },
 	-- Picker
 	explorer = { enabled = true, replace_netrw = true, trash = true },
 	picker = {
@@ -189,16 +189,10 @@ local snacks = {
 	end,
 }
 
-local mini_icons = {
-	"nvim-mini/mini.icons",
-	cond = not vim.g.vscode,
-	opts = {},
-}
-
 local oil = {
 	"stevearc/oil.nvim",
 	cond = not vim.g.vscode,
 	opts = {},
 }
 
-return { snacks, oil, mini_icons }
+return { snacks, oil }
